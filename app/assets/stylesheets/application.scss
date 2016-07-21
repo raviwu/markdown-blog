@@ -12,7 +12,7 @@
  *
  */
 
-$brand-primary: #f7a000;
+$brand-primary: #df912f;
 $brand-success: #d1edce;
 $brand-info:    #c1dbe3;
 $brand-warning: #f6feaa;
@@ -20,6 +20,8 @@ $brand-danger:  #ffe6d8;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,500,300);
+@import "font-awesome";
 
 /*!
 * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
@@ -29,6 +31,7 @@ $brand-danger:  #ffe6d8;
 
 body {
   overflow-x: hidden;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 /* Toggle Styles */
@@ -42,16 +45,16 @@ body {
 }
 
 #wrapper.toggled {
-  padding-left: 250px;
+  padding-left: 200px;
 }
 
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
-  left: 250px;
+  left: 200px;
   width: 0;
   height: 100%;
-  margin-left: -250px;
+  margin-left: -200px;
   overflow-y: auto;
   background: #373737;
   -webkit-transition: all 0.5s ease;
@@ -61,7 +64,7 @@ body {
 }
 
 #wrapper.toggled #sidebar-wrapper {
-  width: 250px;
+  width: 200px;
 }
 
 #page-content-wrapper {
@@ -72,7 +75,7 @@ body {
 
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
-  margin-right: -250px;
+  margin-right: -200px;
 }
 
 /* Sidebar Styles */
@@ -80,7 +83,7 @@ body {
 .sidebar-nav {
   position: absolute;
   top: 0;
-  width: 250px;
+  width: 200px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -89,20 +92,20 @@ body {
 .sidebar-nav li {
   text-align: right;
   text-indent: 20px;
+  padding-right: 20px;
   line-height: 40px;
 }
 
 .sidebar-nav li a {
   display: block;
-  padding-right: 20px;
   text-decoration: none;
-  color: #999999;
+  color: #e9e9e9;
 }
 
 .sidebar-nav li a:hover {
   text-decoration: none;
-  color: #fff;
-  background: rgba(255,255,255,0.2);
+  color: $brand-primary;
+  // background: rgba(255,255,255,0.2);
 }
 
 .sidebar-nav li a:active,
@@ -111,23 +114,55 @@ body {
 }
 
 .sidebar-nav > .sidebar-brand {
-  height: 65px;
+  height: 200px;
   font-size: 18px;
-  line-height: 60px;
+  line-height: 200px;
+  display: block;
+  background-image: image-url("logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+a.nav-bar-icon{
+  font-size: 18px;
+  display: inline !important;
+  padding: auto;
+  text-decoration: inline;
+  color: #e9e9e9;
+
+  :hover {
+    color: #fff !important;
+  }
+}
+
+.navbar-header {
+  padding-left: 30px;
+  .navbar-toggle {
+    background: image-url("logo_line.png") no-repeat scroll 0 0 transparent;
+    color: rgba(255,255,255,0);
+    cursor: pointer;
+    font-weight: bold;
+    height: 40px;
+    width: 100%;
+    a {
+      color: rgba(255,255,255,0);
+      display: block;
+    }
+  }
 }
 
 .sidebar-nav > .sidebar-brand a {
-  color: #999999;
+  color: rgba(255,255,255,0);
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-  color: #fff;
+  color: rgba(255,255,255,0);
   background: none;
 }
 
 @media(min-width:768px) {
   #wrapper {
-    padding-left: 250px;
+    padding-left: 200px;
   }
 
   #wrapper.toggled {
@@ -135,7 +170,7 @@ body {
   }
 
   #sidebar-wrapper {
-    width: 250px;
+    width: 200px;
   }
 
   #wrapper.toggled #sidebar-wrapper {

@@ -11,10 +11,11 @@
       = render 'shared/sidebar'
       / Page Content
       #page-content-wrapper
+        = render 'shared/navbar'
         .container-fluid
           .row
             .col-lg-12
-              %a#menu-toggle.btn.btn-primary{:href => "#menu-toggle"} Toggle Menu
+              // %a#menu-toggle.btn.btn-primary{:href => "#menu-toggle"} Toggle Menu
               = yield
       / /#page-content-wrapper
     / /#wrapper

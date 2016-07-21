@@ -2,21 +2,25 @@
 #sidebar-wrapper
   %ul.sidebar-nav
     %li.sidebar-brand
-      = link_to "LW Studio", root_path
-    %li
+      = link_to "LW Studio", root_path, class: "sidebar-brand"
+    %li.nav-bar-item
       = link_to "Blog", "#"
-    %li
+    %li.nav-bar-item
       = link_to "eBooks", "#"
+    %li.nav-bar-item
+      = link_to "About", "#"
     %li
-      = link_to "gitHub", "#"
-    %li
-      = link_to "Linkedin", "#"
-    %li
-      = link_to "email", "#"
+      = mail_to "raviwu@gmail.com", class: "nav-bar-icon" do
+        = fa_icon "envelope"
+      = link_to "#", class: "nav-bar-icon" do
+        = fa_icon "github"
+      = link_to "#", class: "nav-bar-icon" do
+        = fa_icon "linkedin"
     - if @current_user.present?
       %li
         = link_to "Logout", logout_path, method: :delete
     - else
       %li
         = link_to 'Login', login_path
+
 / /#sidebar-wrapper

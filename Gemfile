@@ -9,6 +9,8 @@ gem 'pg'
 gem 'puma', '~> 3.0'
 # Boostrap CSS
 gem 'bootstrap-sass', '~>3.3.6'
+# User Font Awesome Icon set
+gem 'font-awesome-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use HAML for views

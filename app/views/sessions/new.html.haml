@@ -1,7 +1,17 @@
-= form_tag login_path, class: "pure-form pure-form-stacked" do
-  = field_set_tag "Login" do
-    = label_tag "username", "Username:"
-    = text_field_tag :username
-    = label_tag "password", "Password:"
-    = password_field_tag :password
-    = button_tag "Submit", class: "pure-button pure-button-primary"
+%h3
+  Login
+%hr
+= form_tag login_path, class: "col-lg-6 col-sm-12" do
+  .form-group
+    %label.sr-only{:for => "Username"} Amount (in dollars)
+    .input-group
+      .input-group-addon
+        = fa_icon "user"
+      = text_field_tag :username, nil, class: "form-control", placeholder: "Username"
+  .form-group
+    %label.sr-only{:for => "Password"} Amount (in dollars)
+    .input-group
+      .input-group-addon
+        = fa_icon "key"
+      = password_field_tag :password, nil, class: "form-control"
+  = button_tag "Submit", class: "btn btn-primary"

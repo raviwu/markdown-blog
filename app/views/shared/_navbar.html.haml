@@ -1,0 +1,14 @@
+%nav
+  .container-fluid
+    .navbar-header
+      = button_tag "LW Studio", class: "navbar-toggle", data: {target: "#mainNav", toggle: "collapse"}, type: "button"
+    #mainNav.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          .col-lg-6.col-sm-12
+            = form_tag do
+              .input-group
+                = text_field_tag :search_query, nil, class: "form-control", type: "text", placeholder: "Search for..."
+                %span.input-group-btn
+                  = button_tag class: "btn btn-default" do
+                    %span.glyphicon.glyphicon-search
