@@ -15,6 +15,12 @@ gem 'font-awesome-rails'
 gem 'sass-rails', '~> 5.0'
 # Use HAML for views
 gem 'haml-rails', '~> 0.9'
+# Pagination
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+# Markdown Parser
+gem 'redcarpet'
+gem 'pygments.rb'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -39,6 +45,11 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+
+  # An IRB alternative and runtime developer console.
+  gem "pry-rails"
+  gem "pry-remote"
+  gem "pry-nav"
 end
 
 group :development do
