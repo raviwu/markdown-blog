@@ -198,3 +198,33 @@ a.nav-bar-icon{
     color: rgba(0,0,0,0.7);
   }
 }
+
+.main-content {
+  margin-top: 20px;
+}
+
+/* Post */
+
+.post-title {
+
+  color: rgba(0,0,0,0.8);
+}
+
+.title {
+  font-size: 1.5em;
+  color: rgba(0,0,0,0.8);
+  a:hover, a:active, a:focus {
+    text-decoration: none;
+    color: $brand-primary;
+  }
+}
+
+.meta {
+  font-size: 1em;
+  color: rgba(0,0,0,0.3);
+}
+
+.content {
+  font-size: 1em;
+  color: rgba(0,0,0,0.7);
+}
