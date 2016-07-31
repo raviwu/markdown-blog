@@ -1,8 +1,10 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
-  scope :published, -> { where('published_at <= ?', Time.current) }
+  scope :published, -> { where('published_at <= ?', Time.current).order('created_at DESC') }
 
   before_validation :get_slug, :get_author_name, :get_published_at
+
+  validates :title, presence: true
 
   protected
 
@@ -11,7 +13,7 @@ class Entry < ActiveRecord::Base
 
     define_method(attr_name) do
       self.payload ||= {}
-      self.payload[attr_name]
+      self.payload[attr_name] || self.payload[attr_name.to_s]
     end
 
     define_method("#{attr_name}=".to_sym) do |value|
@@ -26,13 +28,13 @@ class Entry < ActiveRecord::Base
 
   def get_slug
     default_slug = title.downcase.strip.gsub(" ", "-")
-    slug = default_slug
+    assign_slug = slug.present? ? slug : default_slug
 
-    while self.class.where(slug: slug).present?
-      slug = "#{default_slug}-#{SecureRandom.random_number(99999)}"
+    while self.class.where(slug: assign_slug).present? && self.class.where(slug: assign_slug).count > 1
+      assign_slug = "#{default_slug}-#{SecureRandom.random_number(99999)}"
     end
 
-    self.slug = slug
+    self.slug = assign_slug
   end
 
   def get_published_at

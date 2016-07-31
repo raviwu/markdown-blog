@@ -1,0 +1,5 @@
+- provide :title, "Blog"
+= render "add_new_post_button"
+= render @posts
+.row
+  .col-sm-12= paginate @posts, theme: 'twitter-bootstrap-3', pagination_class: "pagination-sm"

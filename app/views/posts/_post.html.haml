@@ -1,0 +1,20 @@
+%h4.title
+  = link_to post_path(post), class: "post-title" do
+    = fa_icon "newspaper-o"
+    = spaced_divider
+    = post.title
+.row.meta.text-muted
+  .col-sm-12.col-md-6
+    %p
+      %span
+        = fa_icon "user"
+        = spaced_divider
+        = post.author_name
+      = spaced_divider
+      %span
+        = fa_icon "calendar"
+        = spaced_divider
+        = post.updated_at
+.row.content
+  .col-sm-12
+    = markdown post.body

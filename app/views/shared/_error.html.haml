@@ -1,0 +1,7 @@
+- if obj.present? && obj.errors.any?
+  %div(class='alert alert-danger')
+    %a.close(data-dismiss='alert') &#215;
+    %h5 Please fix below errors:
+    %ul
+      - obj.errors.full_messages.each do |msg|
+        %li= msg
