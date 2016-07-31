@@ -47,10 +47,10 @@ module ApplicationHelper
   private
 
   def brief_content(text)
-    text.split("<% READMORE %>").first
+    text.split(Settings.content.readmore_tag).first
   end
 
   def complete_content(text)
-    text.gsub("<% READMORE %>", "")
+    text.gsub(Settings.content.readmore_tag, "")
   end
 end
