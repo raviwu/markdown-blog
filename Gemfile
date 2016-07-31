@@ -20,7 +20,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 # Markdown Parser
 gem 'redcarpet'
-gem 'pygments.rb'
+gem 'rouge'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
