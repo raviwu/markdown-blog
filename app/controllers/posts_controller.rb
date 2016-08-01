@@ -53,6 +53,6 @@ class PostsController < ApplicationController
   end
 
   def prepare_post
-    @post = Post.find_by_id params[:id]
+    @post = Post.find_by_slug params[:id]
   end
 end

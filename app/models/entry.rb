@@ -6,6 +6,10 @@ class Entry < ActiveRecord::Base
 
   validates :title, presence: true
 
+  def to_param
+    slug
+  end
+
   protected
 
   def self.content_attr(attr_name, attr_type = :string)
