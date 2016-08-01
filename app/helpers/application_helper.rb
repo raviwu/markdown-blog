@@ -5,6 +5,10 @@ module ApplicationHelper
     "&nbsp;".html_safe
   end
 
+  def show_content(text, options = {})
+    options[:is_index] == true ? brief_content(text) : complete_content(text)
+  end
+
   class HTML < Redcarpet::Render::HTML
     include Rouge::Plugins::Redcarpet
   end
@@ -38,5 +42,15 @@ module ApplicationHelper
 
     @markdown ||= Redcarpet::Markdown.new(@renderer, extensions)
     @markdown.render(text).html_safe
+  end
+
+  private
+
+  def brief_content(text)
+    text.split(Settings.content.readmore_tag).first
+  end
+
+  def complete_content(text)
+    text.gsub(Settings.content.readmore_tag, "")
   end
 end

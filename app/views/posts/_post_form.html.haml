@@ -10,6 +10,6 @@
     = f.label :published_at, "Scheduled to Publish At", id: "published_at"
     = f.datetime_field :published_at, value: Time.current.localtime, placeholder: "YYYY-MM-DD", id: "published_at", class: "form-control"
   .form-group
-    = f.label :body, "Content", id: "body"
+    = f.label :body, "Content, use '#{Settings.content.readmore_tag}' to separate the brief intro in Index view.", id: "body"
     = f.text_area :body, id: "body", class: "form-control", cols: 20, rows: 30
   = f.submit "#{post.new_record? ? "Create" : "Update"}", class: "btn btn-primary"
