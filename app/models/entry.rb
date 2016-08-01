@@ -1,5 +1,6 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
+  has_many :attachments
   scope :published, -> { where('published_at <= ?', Time.current).order('created_at DESC') }
 
   before_validation :get_slug, :get_author_name, :get_published_at
@@ -31,7 +32,7 @@ class Entry < ActiveRecord::Base
   end
 
   def get_slug
-    default_slug = title.downcase.strip.gsub(" ", "-")
+    default_slug = title.downcase.strip.gsub(/([\uFF00-\uFFFF]|[\u0080-\uFFFF])+/, "").gsub(" ", "-")
     assign_slug = slug.present? ? slug : default_slug
 
     while self.class.where(slug: assign_slug).present? && self.class.where(slug: assign_slug).count > 1
