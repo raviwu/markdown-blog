@@ -3,6 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title= yield(:title).present? ? "LW Studtio | #{yield(:title)}" : "LW Studio"
+    = favicon_link_tag 'favcon.png', rel: 'icon', type: 'image/png'
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
