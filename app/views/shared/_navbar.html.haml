@@ -3,8 +3,8 @@
     .navbar-header
       = button_to "LW Studio", root_path, class: "navbar-toggle", data: {target: "#mainNav", toggle: "collapse"}, type: "button", method: :get
     %ul.nav.navbar-nav.navbar-right
-      %li.col-sm-12
-        = form_tag do
+      %li.col-sm-12.col-md-6.col-md-offset-6.col-lg-4.col-lg-offset-8
+        = form_tag class: "pull-right" do
           .input-group
             = text_field_tag :search_query, nil, class: "form-control", type: "text", placeholder: "Search for..."
             %span.input-group-btn
