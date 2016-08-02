@@ -10,12 +10,13 @@
   .form-group
     = f.label :slug, id: "slug"
     = f.text_field :slug, id: "slug", class: "form-control"
-  .form-group
-    = f.label :author_name, id: "author_name"
-    = f.text_field :author_name, id: "author_name", class: "form-control"
-  .form-group
-    = f.label :published_at, "Scheduled to Publish At", id: "published_at"
-    = f.datetime_field :published_at, value: Time.current.localtime, placeholder: "YYYY-MM-DD", id: "published_at", class: "form-control"
+  .row
+    .form-group.col-sm-6.col-md-6.col-lg-6
+      = f.label :author_name, id: "author_name"
+      = f.text_field :author_name, id: "author_name", class: "form-control"
+    .form-group.col-sm-6.col-md-6.col-lg-6
+      = f.label :published_at, "Scheduled to Publish At", id: "published_at"
+      = f.datetime_field :published_at, value: Time.current.localtime, placeholder: "YYYY-MM-DD", id: "published_at", class: "form-control"
   .checkbox
     %label
       = f.check_box :is_draft, value: 0
