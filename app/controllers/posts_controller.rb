@@ -4,7 +4,12 @@ class PostsController < ApplicationController
   before_action :require_post_owner, except: [:index, :new, :create, :show]
 
   def index
-    @posts = Post.published.page params[:page]
+    @posts =
+      if current_user
+        Post.all.page params[:page]
+      else
+        Post.published.page params[:page]
+      end
   end
 
   def new
@@ -12,6 +17,10 @@ class PostsController < ApplicationController
   end
 
   def show
+    if !current_user && @post.is_draft
+      flash[:danger] = "Access Denied"
+      redirect_to :back
+    end
   end
 
   def create

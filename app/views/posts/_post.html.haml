@@ -1,6 +1,6 @@
 %h4.title
   = link_to post_path(post), class: "post-title" do
-    = fa_icon "newspaper-o"
+    = post.is_draft ? fa_icon("lock") : fa_icon("newspaper-o")
     = spaced_divider
     = post.title
 .row.meta.text-muted
