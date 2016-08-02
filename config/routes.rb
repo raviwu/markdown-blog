@@ -9,10 +9,14 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  resources :posts
+  resources :posts do
+    post "/images", to: "posts#create_image", as: "images"
+    delete "/images/:id", to: "posts#destroy_image", as: "image"
+  end
+
   resources :ebooks do
     post "/image", to: "ebooks#create_image", as: "image"
-    delete "/image", to: "ebooks#delete_image"
+    delete "/image", to: "ebooks#destroy_image"
     post "/attachments", to: "ebooks#create_attachment", as: "attachments"
     delete "/attachment/:id", to: "ebooks#destroy_attachment", as: "attachment"
   end
