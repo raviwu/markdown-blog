@@ -64,6 +64,10 @@ module ApplicationHelper
     "#{fa_icon(icon_name)} #{display_string} ".html_safe
   end
 
+  def menu_pages
+    current_user.present? ? Page.editor_menu_pages : Page.public_menu_pages
+  end
+
   private
 
   def brief_content(text)
