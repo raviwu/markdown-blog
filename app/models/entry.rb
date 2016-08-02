@@ -1,6 +1,5 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
-  has_many :attachments
   scope :published, -> { where('published_at <= ?', Time.current).order('created_at DESC') }
 
   before_validation :get_slug, :get_author_name, :get_published_at
