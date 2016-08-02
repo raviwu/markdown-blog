@@ -4,5 +4,4 @@
       %li.list-group-item
         = link_to ebook_attachment_path(ebook, attachment), class: "badge", method: :delete, data: { confirm: "Are you sure to delete this attachment?" } do
           = fa_icon "trash"
-        = spaced_divider
-        = link_to attachment.asset_file_name, attachment.asset.url
+        = prepend_icon_to_link_to attachment.asset_file_name, attachment.asset.url, "file-o"

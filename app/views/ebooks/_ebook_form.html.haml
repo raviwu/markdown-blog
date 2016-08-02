@@ -1,10 +1,9 @@
+= render 'shared/error', obj: @image unless ebook.new_record?
 = render 'shared/error', obj: ebook
-%h4.title Cover Image
-= form_for @image, url: ebook_image_path(ebook), html: { multipart: true } do |f|
-  .form-group
-    = f.file_field :asset
-  = f.submit "Add new Image", class: "btn btn-default"
-%hr
+= render 'shared/error', obj: @attachment unless ebook.new_record?
+.page-header
+  %h1
+    = ebook.new_record? ? "新增 電子書" : "編輯：#{ebook.title}"
 = form_for ebook do |f|
   .form-group
     = f.label :title, id: "title"
@@ -13,16 +12,36 @@
     = f.label :slug, id: "slug"
     = f.text_field :slug, id: "slug", class: "form-control"
   .form-group
+    = f.label :author_name, id: "author_name"
+    = f.text_field :author_name, id: "author_name", class: "form-control"
+  .form-group
     = f.label :published_at, "Scheduled to Publish At", id: "published_at"
     = f.datetime_field :published_at, value: Time.current.localtime, placeholder: "YYYY-MM-DD", id: "published_at", class: "form-control"
+  .form-group
+    = f.label :references, "Resources: description|url,description|url", id: "introduction"
+    = f.text_area :references, id: "references", class: "form-control", cols: 20, rows: 5
   .form-group
     = f.label :introduction, "Introduction, use '#{Settings.content.readmore_tag}' to separate the brief intro in Index view.", id: "introduction"
     = f.text_area :introduction, id: "introduction", class: "form-control", cols: 20, rows: 10
   = f.submit "#{ebook.new_record? ? "Create" : "Update"}", class: "btn btn-primary"
-%hr
-%h4.title Attachments
-= render 'attachment_list', ebook: ebook
-= form_for @attachment, url: ebook_attachments_path(ebook), html: { multipart: true } do |f|
-  .form-group
-    = f.file_field :asset
-  = f.submit "Add new Attachment", class: "btn btn-default"
+- unless ebook.new_record?
+  %hr
+  .row
+    .col-sm-12.col-md-6.col-lg-6
+      %h4.title Cover Image
+      .panel.panel-default
+        .panel-body
+          = link_to ebook_image_path(ebook, @image), class: "pull-right btn btn-default", method: :delete, data: { confirm: "Are you sure to delete this image?" } do
+            = fa_icon "trash"
+          = image_tag ebook.image.asset.url(:small), class: "img-responsive img-rounded" if ebook.image.present?
+      = form_for @image, url: ebook_image_path(ebook), html: { multipart: true } do |f|
+        .form-group
+          = f.file_field :asset
+        = f.submit "Add new Image", class: "btn btn-default"
+    .col-sm-12.col-md-6.col-lg-6
+      %h4.title Attachments
+      = render 'attachment_list', ebook: ebook
+      = form_for @attachment, url: ebook_attachments_path(ebook), html: { multipart: true } do |f|
+        .form-group
+          = f.file_field :asset
+        = f.submit "Add new Attachment", class: "btn btn-default"
