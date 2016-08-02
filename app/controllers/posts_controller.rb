@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_user, except: [:index, :show]
-  before_action :prepare_post, only: [:show, :edit, :update, :destroy]
+  before_action :prepare_post, except: [:index, :new, :create]
+  before_action :require_post_owner, except: [:index, :new, :create, :show]
 
   def index
     @posts = Post.published.page params[:page]
@@ -27,6 +28,7 @@ class PostsController < ApplicationController
 
   def edit
     require_owner(@post)
+    @image = Image.new
   end
 
   def update
@@ -51,11 +53,38 @@ class PostsController < ApplicationController
     end
   end
 
+  def create_image
+    @image = Image.new(image_params)
+    @image.entry = @post
+    if @image.save
+      flash[:success] = "Created new Image!"
+    end
+    redirect_to edit_post_path(@post)
+  end
+
+  def destroy_image
+    @image = Image.find_by_id params[:id]
+    if @image.destroy
+      flash[:success] = "Deleted the Image!"
+    end
+    redirect_to edit_post_path(@post)
+  end
+
+  private
+
   def post_params
     params.require(:post).permit(:body, :author_name, :published_at, :title, :slug)
   end
 
   def prepare_post
-    @post = Post.find_by_slug params[:id]
+    @post = Post.find_by_slug(params[:post_id] || params[:id])
+  end
+
+  def require_post_owner
+    require_owner(@post)
+  end
+
+  def image_params
+    params.require(:image).permit(:asset)
   end
 end
