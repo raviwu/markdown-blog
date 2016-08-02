@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     @posts =
       if current_user
-        Post.all.page params[:page]
+        Post.all.order('created_at DESC').page params[:page]
       else
         Post.published.page params[:page]
       end
@@ -82,7 +82,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body, :author_name, :published_at, :title, :slug)
+    params.require(:post).permit(:body, :author_name, :published_at, :is_draft, :title, :slug)
   end
 
   def prepare_post
