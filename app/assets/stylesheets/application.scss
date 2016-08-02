@@ -19,6 +19,11 @@ $brand-success: #d1edce;
 $brand-info:    #c1dbe3;
 $brand-warning: #f6feaa;
 $brand-danger:  #ffe6d8;
+$normal-text:   #555555;
+$muted-text:    #aaaaaa;
+$title-text:    #373737;
+$light-white:   #fafafa;
+$bg-dark:       #373737;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -34,6 +39,18 @@ $brand-danger:  #ffe6d8;
 body {
   overflow-x: hidden;
   font-family: 'Ubuntu', sans-serif;
+  background: $light-white;
+
+  a {
+    text-decoration: none;
+    color: $muted-text;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: $brand-primary;
+    // background: rgba(255,255,255,0.2);
+  }
 }
 
 /* Toggle Styles */
@@ -58,7 +75,7 @@ body {
   height: 100%;
   margin-left: -200px;
   overflow-y: auto;
-  background: #373737;
+  background: $bg-dark;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -101,7 +118,7 @@ body {
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color: #e9e9e9;
+  color: $light-white;
 }
 
 .sidebar-nav li a:hover {
@@ -130,10 +147,10 @@ a.nav-bar-icon{
   display: inline !important;
   padding: auto;
   text-decoration: inline;
-  color: #e9e9e9;
+  color: $light-white;
 
   :hover {
-    color: #fff !important;
+    color: $brand-primary !important;
   }
 }
 
@@ -192,12 +209,12 @@ a.nav-bar-icon{
 
 /* footer */
 .footer {
-  color: rgba(0,0,0,0.4);
+  color: $normal-text;
   font-size: 12px;
 
   span {
     font-weight: bold;
-    color: rgba(0,0,0,0.7);
+    color: $normal-text;
   }
 }
 
@@ -208,25 +225,20 @@ a.nav-bar-icon{
 /* Post */
 
 .post-title {
-
-  color: rgba(0,0,0,0.8);
+  color: $title-text;
 }
 
 .title {
   font-size: 1.5em;
-  color: rgba(0,0,0,0.8);
-  a:hover, a:active, a:focus {
-    text-decoration: none;
-    color: $brand-primary;
-  }
+  color: $title-text;
 }
 
 .meta {
   font-size: 1em;
-  color: rgba(0,0,0,0.3);
+  color: $muted-text;
 }
 
 .content {
   font-size: 1em;
-  color: rgba(0,0,0,0.7);
+  color: $normal-text;
 }
