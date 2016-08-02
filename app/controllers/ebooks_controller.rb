@@ -6,7 +6,7 @@ class EbooksController < ApplicationController
   def index
     @ebooks =
       if current_user
-        Ebook.all.page params[:page]
+        Ebook.all.order('created_at DESC').page params[:page]
       else
         Ebook.published.page params[:page]
       end
@@ -109,6 +109,6 @@ class EbooksController < ApplicationController
   end
 
   def ebook_params
-    params.require(:ebook).permit(:introduction, :references, :author_name, :published_at, :title, :slug)
+    params.require(:ebook).permit(:introduction, :references, :author_name, :is_draft, :published_at, :title, :slug)
   end
 end

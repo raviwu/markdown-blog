@@ -16,6 +16,10 @@
   .form-group
     = f.label :published_at, "Scheduled to Publish At", id: "published_at"
     = f.datetime_field :published_at, value: Time.current.localtime, placeholder: "YYYY-MM-DD", id: "published_at", class: "form-control"
+  .checkbox
+    %label
+      = f.check_box :is_draft, value: 0
+      = prepend_icon_to_string "Reserve to Draft Box.", "lock"
   .form-group
     = f.label :references, "Resources: description|url,description|url", id: "introduction"
     = f.text_area :references, id: "references", class: "form-control", cols: 20, rows: 5
