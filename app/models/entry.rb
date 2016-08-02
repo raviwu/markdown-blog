@@ -6,6 +6,10 @@ class Entry < ActiveRecord::Base
 
   validates :title, presence: true
 
+  def to_param
+    slug
+  end
+
   protected
 
   def self.content_attr(attr_name, attr_type = :string)
@@ -27,7 +31,7 @@ class Entry < ActiveRecord::Base
   end
 
   def get_slug
-    default_slug = title.downcase.strip.gsub(" ", "-")
+    default_slug = title.downcase.strip.gsub(/([\uFF00-\uFFFF]|[\u0080-\uFFFF])+/, "").gsub(" ", "-")
     assign_slug = slug.present? ? slug : default_slug
 
     while self.class.where(slug: assign_slug).present? && self.class.where(slug: assign_slug).count > 1

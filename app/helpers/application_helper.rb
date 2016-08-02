@@ -44,6 +44,26 @@ module ApplicationHelper
     @markdown.render(text).html_safe
   end
 
+  def postpend_icon_to_link_to(display_string, url, icon_name)
+    link_to url do
+      "#{display_string} #{fa_icon(icon_name)} ".html_safe
+    end
+  end
+
+  def prepend_icon_to_link_to(display_string, url, icon_name)
+    link_to url do
+      "#{fa_icon(icon_name)} #{display_string} ".html_safe
+    end
+  end
+
+  def postpend_icon_to_string(display_string, icon_name)
+    "#{display_string} #{fa_icon(icon_name)} ".html_safe
+  end
+
+  def prepend_icon_to_string(display_string, icon_name)
+    "#{fa_icon(icon_name)} #{display_string} ".html_safe
+  end
+
   private
 
   def brief_content(text)

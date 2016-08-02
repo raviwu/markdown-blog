@@ -26,9 +26,11 @@ class PostsController < ApplicationController
   end
 
   def edit
+    require_owner(@post)
   end
 
   def update
+    require_owner(@post)
     @post.assign_attributes(post_params)
 
     if @post.save
@@ -40,6 +42,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    require_owner(@post)
     if @post.destroy
       flash[:success] = "Deleted the post!"
       redirect_to posts_path
@@ -53,6 +56,6 @@ class PostsController < ApplicationController
   end
 
   def prepare_post
-    @post = Post.find_by_id params[:id]
+    @post = Post.find_by_slug params[:id]
   end
 end

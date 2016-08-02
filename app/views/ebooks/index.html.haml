@@ -1,0 +1,31 @@
+- provide :title, "自由電子書"
+.page-header
+  %h1
+    = "自由電子書"
+.content
+  %p
+    自從接觸奧地利學派後，深受其吸引，也感念於
+    = postpend_icon_to_link_to "Mises Institute", "https://mises.org/", "external-link"
+    在網路上提供大量方便取閱的書籍專著，開啟另一片知性的天地。
+  %p
+    為了推廣這些我所認同的信念，我也在 2012 年開始寫起 LW Studio 這個網站，雖然至今讀者仍然很少，但仍覺得自己的為文內容，強度不足以完整表達理論的全貌。
+  %p
+    也因此，突然決定開始系統性地翻譯一些
+    = postpend_icon_to_link_to "Mises Institute", "https://mises.org/", "external-link"
+    上所提供的專著，將值得一看的內容逐步中文化，也充當自己業餘時間的娛樂。
+  %p
+    所完成的譯文，將以電子書的形式發布，早期譯作皆為個人獨自排版完成的 epub、mobi 與 pdf，譯文沒有太多心力校對很多次，但排版設計總盡量做到精美與清晰。
+  %p
+    由於個人的工作變動，可用來翻譯的時間大幅萎縮，為了節省排版的時間以維持翻譯產量，未來的譯作將透過
+    = postpend_icon_to_link_to "Leanpub", "https://leanpub.com/u/raviwu", "external-link"
+    的服務發布，當然，還是都能夠免費取得、自由散播。
+  %p
+    所有本站所提供的原創內容，不管是文章或是書籍翻譯，都採用
+    = postpend_icon_to_link_to "創用 CC 姓名標示授權", "http://creativecommons.org/licenses/by/3.0/deed.zh_TW", "external-link"
+    ，換句話說，只需標明內容出處即可自由改作、引用或運用至商業用途。
+- if current_user
+  = link_to new_ebook_path, class: "btn btn-primary" do
+    = fa_icon "plus"
+    = "New eBook"
+%hr
+= render @ebooks, is_index: true
