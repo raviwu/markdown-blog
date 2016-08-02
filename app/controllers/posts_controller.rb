@@ -36,12 +36,10 @@ class PostsController < ApplicationController
   end
 
   def edit
-    require_owner(@post)
     @image = Image.new
   end
 
   def update
-    require_owner(@post)
     @post.assign_attributes(post_params)
 
     if @post.save
@@ -53,7 +51,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    require_owner(@post)
     if @post.destroy
       flash[:success] = "Deleted the post!"
       redirect_to posts_path
@@ -71,7 +68,7 @@ class PostsController < ApplicationController
     redirect_to edit_post_path(@post)
   end
 
-  def destroy_image
+  def destroy_images
     @image = Image.find_by_id params[:id]
     if @image.destroy
       flash[:success] = "Deleted the Image!"

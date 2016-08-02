@@ -20,4 +20,9 @@ Rails.application.routes.draw do
     post "/attachments", to: "ebooks#create_attachment", as: "attachments"
     delete "/attachment/:id", to: "ebooks#destroy_attachment", as: "attachment"
   end
+
+  resources :pages, except: [:index] do
+    post "/image", to: "pages#create_image", as: "images"
+    delete "/image/:id", to: "pages#destroy_image", as: "image"
+  end
 end
