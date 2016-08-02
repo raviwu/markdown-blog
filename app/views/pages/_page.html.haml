@@ -1,0 +1,5 @@
+- header = page.is_draft ? prepend_icon_to_string(page.title, "lock") : page.title
+= render 'shared/page_header', header: header
+.row.content
+  .col-sm-12
+    = markdown show_content(page.body, is_index: is_index)
