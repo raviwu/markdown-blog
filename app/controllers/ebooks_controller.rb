@@ -4,7 +4,12 @@ class EbooksController < ApplicationController
   before_action :require_ebook_owner, except: [:index, :new, :create, :show]
 
   def index
-    @ebooks = Ebook.published.page params[:page]
+    @ebooks =
+      if current_user
+        Ebook.all.page params[:page]
+      else
+        Ebook.published.page params[:page]
+      end
   end
 
   def new
