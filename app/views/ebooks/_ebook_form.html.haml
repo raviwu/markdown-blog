@@ -1,9 +1,8 @@
 = render 'shared/error', obj: @image unless ebook.new_record?
 = render 'shared/error', obj: ebook
 = render 'shared/error', obj: @attachment unless ebook.new_record?
-.page-header
-  %h1
-    = ebook.new_record? ? "新增 電子書" : "編輯：#{ebook.title}"
+- header = ebook.new_record? ? "新增 電子書" : "編輯：#{ebook.title}"
+= render 'shared/page_header', header: header
 = form_for ebook do |f|
   .form-group
     = f.label :title, id: "title"
