@@ -4,7 +4,12 @@ class EbooksController < ApplicationController
   before_action :require_ebook_owner, except: [:index, :new, :create, :show]
 
   def index
-    @ebooks = Ebook.published.page params[:page]
+    @ebooks =
+      if current_user
+        Ebook.all.order('created_at DESC').page params[:page]
+      else
+        Ebook.published.page params[:page]
+      end
   end
 
   def new
@@ -104,6 +109,6 @@ class EbooksController < ApplicationController
   end
 
   def ebook_params
-    params.require(:ebook).permit(:introduction, :references, :author_name, :published_at, :title, :slug)
+    params.require(:ebook).permit(:introduction, :references, :author_name, :is_draft, :published_at, :title, :slug)
   end
 end

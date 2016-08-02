@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801225929) do
+ActiveRecord::Schema.define(version: 20160802092501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,12 @@ ActiveRecord::Schema.define(version: 20160801225929) do
     t.string   "title"
     t.string   "slug"
     t.json     "payload"
-    t.integer  "user_id",      null: false
+    t.integer  "user_id",                     null: false
     t.string   "author_name"
-    t.datetime "published_at", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "published_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "is_draft",     default: true, null: false
     t.index ["slug"], name: "index_entries_on_slug", using: :btree
     t.index ["type"], name: "index_entries_on_type", using: :btree
     t.index ["user_id"], name: "index_entries_on_user_id", using: :btree

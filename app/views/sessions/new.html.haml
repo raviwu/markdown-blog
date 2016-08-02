@@ -1,17 +1,15 @@
-%h3
-  Login
-%hr
-= form_tag login_path, class: "col-lg-6 col-sm-12" do
+= render 'shared/page_header', header: "Login"
+= form_tag login_path, class: "col-lg-4 col-md-6 col-sm-12" do
   .form-group
-    %label.sr-only{:for => "Username"} Amount (in dollars)
+    %label.sr-only{:for => "Username"}
     .input-group
       .input-group-addon
         = fa_icon "user"
       = text_field_tag :username, nil, class: "form-control", placeholder: "Username"
   .form-group
-    %label.sr-only{:for => "Password"} Amount (in dollars)
+    %label.sr-only{:for => "Password"}
     .input-group
       .input-group-addon
         = fa_icon "key"
-      = password_field_tag :password, nil, class: "form-control"
+      = password_field_tag :password, nil, class: "form-control", placeholder: "Password"
   = button_tag "Submit", class: "btn btn-primary"

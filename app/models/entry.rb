@@ -1,6 +1,6 @@
 class Entry < ActiveRecord::Base
   belongs_to :user
-  scope :published, -> { where('published_at <= ?', Time.current).order('created_at DESC') }
+  scope :published, -> { where('published_at <= ? AND is_draft = ?', Time.current, false).order('created_at DESC') }
 
   before_validation :get_slug, :get_author_name, :get_published_at
 
