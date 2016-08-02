@@ -1,0 +1,28 @@
+= render 'shared/error', obj: ebook
+%h4.title Cover Image
+= form_for @image, url: ebook_image_path(ebook), html: { multipart: true } do |f|
+  .form-group
+    = f.file_field :asset
+  = f.submit "Add new Image", class: "btn btn-default"
+%hr
+= form_for ebook do |f|
+  .form-group
+    = f.label :title, id: "title"
+    = f.text_field :title, id: "title", class: "form-control"
+  .form-group
+    = f.label :slug, id: "slug"
+    = f.text_field :slug, id: "slug", class: "form-control"
+  .form-group
+    = f.label :published_at, "Scheduled to Publish At", id: "published_at"
+    = f.datetime_field :published_at, value: Time.current.localtime, placeholder: "YYYY-MM-DD", id: "published_at", class: "form-control"
+  .form-group
+    = f.label :introduction, "Introduction, use '#{Settings.content.readmore_tag}' to separate the brief intro in Index view.", id: "introduction"
+    = f.text_area :introduction, id: "introduction", class: "form-control", cols: 20, rows: 10
+  = f.submit "#{ebook.new_record? ? "Create" : "Update"}", class: "btn btn-primary"
+%hr
+%h4.title Attachments
+= render 'attachment_list', ebook: ebook
+= form_for @attachment, url: ebook_attachments_path(ebook), html: { multipart: true } do |f|
+  .form-group
+    = f.file_field :asset
+  = f.submit "Add new Attachment", class: "btn btn-default"

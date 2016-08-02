@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   resources :posts
+  resources :ebooks do
+    post "/image", to: "ebooks#create_image", as: "image"
+    delete "/image", to: "ebooks#delete_image"
+    post "/attachments", to: "ebooks#create_attachment", as: "attachments"
+    delete "/attachment/:id", to: "ebooks#destroy_attachment", as: "attachment"
+  end
 end

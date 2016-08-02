@@ -1,0 +1,10 @@
+= render "delete_ebook_button", ebook: ebook
+= render "shared/float_object_spacer"
+= render 'edit_ebook_button', ebook: ebook
+%h4.title
+  = fa_icon "book"
+  = spaced_divider
+  = ebook.title
+%p.content
+  = markdown ebook.introduction
+= render 'attachment_list', ebook: ebook
