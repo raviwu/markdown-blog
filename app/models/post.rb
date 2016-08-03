@@ -12,4 +12,9 @@ class Post < Entry
   def is_public?
     published_at <= Time.current && is_draft == false
   end
+
+  def search(query)
+    post_ids = Post.full_text_search(query)&.map(&:id)
+    Post.where('id IN (?)', post_ids)
+  end
 end

@@ -6,9 +6,9 @@ class PostsController < ApplicationController
   def search
     @posts =
       if current_user
-        Post.full_text_search(params[:search_query]).page params[:page]
+        Post.search(params[:search_query]).page params[:page]
       else
-        Post.full_text_search(params[:search_query]).select(&:is_public?).page params[:page]
+        Post.search(params[:search_query]).select(&:is_public?).page params[:page]
       end
     @highlights = params[:search_query]&.strip&.split
   end
