@@ -2,9 +2,11 @@
   .container-fluid
     .navbar-header
       = button_to "LW Studio", root_path, class: "navbar-toggle", data: {target: "#mainNav", toggle: "collapse"}, type: "button", method: :get
+    = link_to "#menu-toggle", id: "menu-toggle", class: "btn btn-default fixed-toggle-navicon" do
+      = fa_icon "navicon"
     %ul.nav.navbar-nav.navbar-right
-      %li.col-sm-12.col-md-6.col-md-offset-6.col-lg-4.col-lg-offset-8
-        = form_tag posts_search_path, class: "pull-right", method: :get do
+      %li.col-sm-12.col-md-6.col-md-offset-6.col-lg-6.col-lg-offset-6
+        = form_tag posts_search_path, class: "pull-right form-inline", method: :get do
           .input-group
             = text_field_tag :search_query, nil, class: "form-control", type: "text", placeholder: "Search Post for..."
             %span.input-group-btn
