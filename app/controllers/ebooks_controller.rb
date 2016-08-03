@@ -53,12 +53,16 @@ class EbooksController < ApplicationController
   end
 
   def create_image
-    @image = Image.new(image_params)
-    @image.entry = @ebook
-    if @image.save
-      # make sure there is
-      Image.where(entry: @ebook)[0..-2]&.map(&:destroy)
-      flash[:success] = "Update Cover Image!"
+    if params[:image].present?
+      @image = Image.new(image_params)
+      @image.entry = @ebook
+      if @image.save
+        # make sure there is
+        Image.where(entry: @ebook)[0..-2]&.map(&:destroy)
+        flash[:success] = "Update Cover Image!"
+      end
+    else
+      flash[:danger] = "Please provide Image to upload."
     end
     redirect_to :back
   end
@@ -72,12 +76,16 @@ class EbooksController < ApplicationController
   end
 
   def create_attachment
-    @attachment = Attachment.new(attachment_params)
-    @attachment.entry = @ebook
-    if @attachment.save
-      flash[:success] = "Added new attachment."
+    if params[:attachment].present?
+      @attachment = Attachment.new(attachment_params)
+      @attachment.entry = @ebook
+      if @attachment.save
+        flash[:success] = "Added new attachment."
+      else
+        flash[:danger] = "Opps, something wrong with your upload."
+      end
     else
-      flash[:danger] = "Opps, something wrong with your upload."
+      flash[:danger] = "Please provide attachment to upload."
     end
     redirect_to :back
   end
