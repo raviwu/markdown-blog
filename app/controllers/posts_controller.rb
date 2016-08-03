@@ -8,7 +8,7 @@ class PostsController < ApplicationController
       if current_user
         Post.full_text_search(params[:search_query]).page params[:page]
       else
-        Post.full_text_search(params[:search_query]).select(&:is_public?).page param[:page]
+        Post.full_text_search(params[:search_query]).select(&:is_public?).page params[:page]
       end
     @highlights = params[:search_query]&.strip&.split
   end
@@ -70,10 +70,12 @@ class PostsController < ApplicationController
   end
 
   def create_image
-    @image = Image.new(image_params)
-    @image.entry = @post
-    if @image.save
-      flash[:success] = "Created new Image!"
+    if params[:image].present?
+      @image = Image.new(image_params)
+      @image.entry = @post
+      flash[:success] = "Created new Image!" if @image.save
+    else
+      flash[:danger] = "Please provide Image to upload."
     end
     redirect_to edit_post_path(@post)
   end
