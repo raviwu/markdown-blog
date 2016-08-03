@@ -1,7 +1,17 @@
 class PostsController < ApplicationController
-  before_action :require_user, except: [:index, :show]
-  before_action :prepare_post, except: [:index, :new, :create]
-  before_action :require_post_owner, except: [:index, :new, :create, :show]
+  before_action :require_user, except: [:index, :show, :search]
+  before_action :prepare_post, except: [:index, :new, :create, :search]
+  before_action :require_post_owner, except: [:index, :new, :create, :show, :search]
+
+  def search
+    @posts =
+      if current_user
+        Post.full_text_search(params[:search_query]).page params[:page]
+      else
+        Post.full_text_search(params[:search_query]).select(&:is_public?).page param[:page]
+      end
+    @highlights = params[:search_query]&.strip&.split
+  end
 
   def index
     @posts =
