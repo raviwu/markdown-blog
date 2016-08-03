@@ -2,7 +2,7 @@
   = link_to post_path(post), class: "post-title" do
     = post.is_draft ? fa_icon("lock") : fa_icon("newspaper-o")
     = spaced_divider
-    = post.title
+    = highlight_if_needed(post.title, @highlights)
 .row.meta.text-muted
   .col-sm-12.col-md-6
     %p
@@ -22,4 +22,4 @@
         = l post.updated_at, format: :post
 .row.content
   .col-sm-12
-    = markdown show_content(post.body, is_index: is_index)
+    = highlight_if_needed(markdown(show_content(post.body, is_index: is_index)), @highlights)

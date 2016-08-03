@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  get "/posts_search", to: "posts#search", as: "posts_search"
+
   resources :posts do
     post "/images", to: "posts#create_image", as: "images"
     delete "/images/:id", to: "posts#destroy_image", as: "image"

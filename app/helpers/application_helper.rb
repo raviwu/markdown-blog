@@ -68,6 +68,10 @@ module ApplicationHelper
     current_user.present? ? Page.editor_menu_pages : Page.public_menu_pages
   end
 
+  def highlight_if_needed(content, terms = nil)
+    terms.present? ? highlight(content, terms) : content
+  end
+
   private
 
   def brief_content(text)

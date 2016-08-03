@@ -19,7 +19,7 @@ class PagesController < ApplicationController
     @page.user = current_user
 
     if @page.save
-      flash[:success] = "Created a new post!"
+      flash[:success] = "Created a new page!"
       redirect_to page_path(@page)
     else
       render :new
@@ -34,7 +34,7 @@ class PagesController < ApplicationController
     @page.assign_attributes(page_params)
 
     if @page.save
-      flash[:success] = "Updated the post!"
+      flash[:success] = "Updated the page!"
       redirect_to page_path(@page)
     else
       render :edit
@@ -43,7 +43,7 @@ class PagesController < ApplicationController
 
   def destroy
     if @page.destroy
-      flash[:success] = "Deleted the post!"
+      flash[:success] = "Deleted the page!"
       redirect_to root_path
     else
       render :show
