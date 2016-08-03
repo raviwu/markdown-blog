@@ -2,7 +2,8 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title LW Studio
+    %title= yield(:title).present? ? "LW Studtio | #{yield(:title)}" : "LW Studio"
+    = favicon_link_tag 'favcon.png', rel: 'icon', type: 'image/png'
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -12,14 +13,13 @@
       / Page Content
       #page-content-wrapper
         = render 'shared/navbar'
-        .container-fluid
+        .container-fluid.main-content
           .row
             .col-lg-12
               // %a#menu-toggle.btn.btn-primary{:href => "#menu-toggle"} Toggle Menu
+              = render 'shared/message'
               = yield
-      / /#page-content-wrapper
-    / /#wrapper
-    / jQuery
+          = render 'shared/footer'
     %script{:src => "js/jquery.js"}
     / Bootstrap Core JavaScript
     %script{:src => "js/bootstrap.min.js"}

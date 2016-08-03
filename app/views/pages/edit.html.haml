@@ -1,0 +1,3 @@
+- provide :title, "Edit #{@page.title}"
+= render 'shared/page_header', header: "編輯：#{@page.title}"
+= render 'page_form', page: @page

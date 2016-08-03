@@ -1,0 +1,25 @@
+%h4.title
+  = link_to post_path(post), class: "post-title" do
+    = post.is_draft ? fa_icon("lock") : fa_icon("newspaper-o")
+    = spaced_divider
+    = highlight_if_needed(post.title, @highlights)
+.row.meta.text-muted
+  .col-sm-12.col-md-6
+    %p
+      %span
+        = fa_icon "user"
+        = spaced_divider
+        = post.author_name
+      = spaced_divider
+      %span
+        = fa_icon "clock-o"
+        = spaced_divider
+        = l post.created_at, format: :post
+      = spaced_divider
+      %span
+        = fa_icon "edit"
+        = spaced_divider
+        = l post.updated_at, format: :post
+.row.content
+  .col-sm-12
+    = highlight_if_needed(markdown(show_content(post.body, is_index: is_index)), @highlights)

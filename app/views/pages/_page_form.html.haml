@@ -1,0 +1,42 @@
+= render 'shared/error', obj: page
+= render 'shared/error', obj: @image
+= form_for page do |f|
+  .form-group
+    = f.label :title, id: "title"
+    = f.text_field :title, id: "title", class: "form-control"
+  .form-group
+    = f.label :slug, id: "slug"
+    = f.text_field :slug, id: "slug", class: "form-control"
+  .row
+    .form-group.col-sm-6.col-md-6.col-lg-6
+      = f.label :published_at, "Scheduled to Publish At", id: "published_at"
+      = f.datetime_field :published_at, value: Time.current.localtime, placeholder: "YYYY-MM-DD", id: "published_at", class: "form-control"
+    .form-group.col-sm-6.col-md-6.col-lg-6
+      = f.label :position, id: "position"
+      = f.text_field :position, id: "position", class: "form-control"
+  .checkbox
+    %label
+      = f.check_box :is_draft, value: 0
+      = prepend_icon_to_string "Reserve to Draft Box.", "lock"
+  .form-group
+    = f.label :body, "Content", id: "body"
+    = f.text_area :body, id: "body", class: "form-control", cols: 20, rows: 30
+  = f.submit "#{page.new_record? ? "Create" : "Update"}", class: "btn btn-primary"
+- unless page.new_record?
+  %hr
+  %h4.title Attached Image
+  .row
+    - page.images.each do |image|
+      .col-sm-6.col-md-4.col-lg-3
+        .panel.panel-default
+          .panel-body
+            = link_to page_image_path(page, image), class: "pull-right btn btn-default", method: :delete, data: { confirm: "Are you sure to delete this image?" } do
+              = fa_icon "trash"
+            = link_to image.asset.url(:medium) do
+              = image_tag image.asset.url(:thumb), class: "img-responsive img-rounded"
+  .row
+    .col-sm-12
+      = form_for @image, url: page_images_path(page), html: { multipart: true }, method: :page do |f|
+        .form-group
+          = f.file_field :asset
+        = f.submit "Add new Image", class: "btn btn-default"

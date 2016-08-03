@@ -1,0 +1,3 @@
+- provide :title, @post.title
+= render 'shared/page_header', header: "編輯：#{@post.title}"
+= render 'post_form', post: @post
