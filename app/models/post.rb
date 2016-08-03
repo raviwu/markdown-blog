@@ -13,7 +13,7 @@ class Post < Entry
     published_at <= Time.current && is_draft == false
   end
 
-  def search(query)
+  def self.search(query)
     post_ids = Post.full_text_search(query)&.map(&:id)
     Post.where('id IN (?)', post_ids)
   end
