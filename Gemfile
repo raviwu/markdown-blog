@@ -49,7 +49,6 @@ gem "safe_yaml", "~>1.0.4"
 
 # Attachment Management
 gem "paperclip", "~> 5.0.0"
-gem "fog"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
