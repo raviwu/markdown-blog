@@ -14,8 +14,9 @@
       - ebook.reference_infos.each do |info|
         %p.meta.text-muted
           = prepend_icon_to_link_to (info[:description] || info[:url]), info[:url], "external-link"
-    = render "ebooks_download_button_group", ebook: ebook
+    = render "ebooks_download_button_group", ebook: ebook unless ebook.attachments.present?
     %p.content= markdown ebook.introduction
-.row
-  .col-sm-12
-    = render 'attachment_list', ebook: ebook
+- unless ebook.pdf_url.present? || ebook.epub_url.present? || ebook.mobi_url.present?
+  .row
+    .col-sm-12
+      = render 'attachment_list', ebook: ebook
