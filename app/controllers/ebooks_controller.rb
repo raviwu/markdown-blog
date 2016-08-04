@@ -117,6 +117,6 @@ class EbooksController < ApplicationController
   end
 
   def ebook_params
-    params.require(:ebook).permit(:introduction, :references, :author_name, :is_draft, :published_at, :title, :slug)
+    params.require(:ebook).permit(:cover_url, :epub_url, :pdf_url, :mobi_url, :introduction, :references, :author_name, :is_draft, :published_at, :title, :slug)
   end
 end
