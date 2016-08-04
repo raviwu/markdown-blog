@@ -83,4 +83,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.paperclip_defaults =
+    {
+      storage: :fog,
+      fog_credentials:
+        {
+          provider: 'Google',
+          google_storage_access_key_id: ENV["GOOGLE_STORAGE_ACCESS_KEY_ID"],
+          google_storage_secret_access_key: ENV["GOOGLE_STORAGE_SECRET_ACCESS_KEY"]
+        },
+      path: "lwstudio/:class/:attachment/:id_partition/:style/:filename"
+    }
 end
