@@ -7,12 +7,14 @@
     = render 'edit_ebook_button', ebook: ebook
 .row
   .col-sm-12
-    = image_tag ebook.image.asset.url(:small), class: "pull-left img-responsive img-rounded", style: "margin-right: 1em; margin-bottom: 1em;" if ebook.image.present?
+    - cover_url = ebook.image.present? ? ebook.image.asset.url(:small) : ebook.cover_url
+    = image_tag cover_url, class: "pull-left img-responsive img-rounded", style: "margin-right: 1em; margin-bottom: 1em; width: 150px;" if cover_url.present?
     %p.meta.text-muted= prepend_icon_to_string ebook.author_name, "user-secret"
     - if ebook.references.present?
       - ebook.reference_infos.each do |info|
         %p.meta.text-muted
           = prepend_icon_to_link_to (info[:description] || info[:url]), info[:url], "external-link"
+    = render "ebooks_download_button_group", ebook: ebook
     %p.content= markdown ebook.introduction
 .row
   .col-sm-12
