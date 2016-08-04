@@ -1,4 +1,4 @@
-= render 'shared/error', obj: @image unless ebook.new_record?
+= render 'shared/error', obj: ebook.image unless ebook.new_record?
 = render 'shared/error', obj: ebook
 = render 'shared/error', obj: @attachment unless ebook.new_record?
 - header = ebook.new_record? ? "新增 電子書" : "編輯：#{ebook.title}"
@@ -35,7 +35,7 @@
       %h4.title Cover Image
       .panel.panel-default
         .panel-body
-          = link_to ebook_image_path(ebook, @image), class: "pull-right btn btn-default", method: :delete, data: { confirm: "Are you sure to delete this image?" } do
+          = link_to ebook_image_path(ebook), class: "pull-right btn btn-default", method: :delete, data: { confirm: "Are you sure to delete this image?" } do
             = fa_icon "trash"
           = image_tag ebook.image.asset.url(:small), class: "img-responsive img-rounded" if ebook.image.present?
       = form_for @image, url: ebook_image_path(ebook), html: { multipart: true } do |f|

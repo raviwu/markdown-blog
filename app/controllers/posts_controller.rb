@@ -82,7 +82,7 @@ class PostsController < ApplicationController
 
   def destroy_images
     @image = Image.find_by_id params[:id]
-    if @image.destroy
+    if @image.present? && @image.destroy
       flash[:success] = "Deleted the Image!"
     end
     redirect_to edit_post_path(@post)
