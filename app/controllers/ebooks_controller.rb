@@ -68,8 +68,8 @@ class EbooksController < ApplicationController
   end
 
   def destroy_image
-    @image = Image.find_by_id params[:id]
-    if @image.destroy
+    @images = Image.where(entry: @ebook)
+    if @images.destroy_all
       flash[:success] = "Deleted the image!"
     end
     redirect_to :back
@@ -92,7 +92,7 @@ class EbooksController < ApplicationController
 
   def destroy_attachment
     @attachment = Attachment.find_by_id params[:id]
-    if @attachment.destroy
+    if @attachment.present? && @attachment.destroy
       flash[:success] = "Deleted the attachment!"
     end
     redirect_to :back
