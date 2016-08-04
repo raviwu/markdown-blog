@@ -8,13 +8,4 @@ class Post < Entry
   has_many :images, class_name: 'Image', foreign_key: 'entry_id', dependent: :destroy
 
   validates :body, presence: true
-
-  def is_public?
-    published_at <= Time.current && is_draft == false
-  end
-
-  def self.search(query)
-    post_ids = Post.full_text_search(query)&.map(&:id)
-    Post.where('id IN (?)', post_ids)
-  end
 end
