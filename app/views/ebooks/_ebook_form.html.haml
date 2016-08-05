@@ -9,7 +9,19 @@
     = f.text_field :title, id: "title", class: "form-control"
   .form-group
     = f.label :slug, id: "slug"
-    = f.text_field :slug, id: "slug", class: "form-control"
+    = f.text_field :slug, id: "slug", class: "form-control #{"disabled" unless ebook.new_record?}"
+  .form-group
+    = f.label :cover_url, id: "cover_url"
+    = f.text_field :cover_url, id: "cover_url", class: "form-control"
+  .form-group
+    = f.label :pdf_url, id: "pdf_url"
+    = f.text_field :pdf_url, id: "pdf_url", class: "form-control"
+  .form-group
+    = f.label :epub_url, id: "epub_url"
+    = f.text_field :epub_url, id: "epub_url", class: "form-control"
+  .form-group
+    = f.label :mobi_url, id: "mobi_url"
+    = f.text_field :mobi_url, id: "mobi_url", class: "form-control"
   .row
     .form-group.col-sm-6.col-md-6.col-lg-6
       = f.label :author_name, id: "author_name"

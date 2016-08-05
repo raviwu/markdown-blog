@@ -4,6 +4,10 @@ class Ebook < Entry
   has_one :image, class_name: 'Image', foreign_key: 'entry_id', dependent: :destroy
   content_attr :introduction, :text
   content_attr :references, :text
+  content_attr :pdf_url, :string
+  content_attr :epub_url, :string
+  content_attr :mobi_url, :string
+  content_attr :cover_url, :string
 
   validates :introduction, presence: true
 

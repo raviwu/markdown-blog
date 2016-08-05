@@ -1,0 +1,12 @@
+- if ebook.pdf_url.present? || ebook.epub_url.present? || ebook.mobi_url.present?
+  .btn-group
+    - if ebook.pdf_url.present?
+      = button_tag ebook.pdf_url, class: "btn btn-default" do
+        = prepend_icon_to_string "PDF", "file-o"
+    - if ebook.mobi_url.present?
+      = button_tag ebook.mobi_url, class: "btn btn-default" do
+        = prepend_icon_to_string "mobi", "file-o"
+    - if ebook.epub_url.present?
+      = button_tag ebook.epub_url, class: "btn btn-default" do
+        = prepend_icon_to_string "ePub", "file-o"
+%hr
