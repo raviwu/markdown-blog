@@ -24,7 +24,7 @@
       %span
         = fa_icon "comment"
         = spaced_divider
-        = link_to "0 comments", "#{post_path(post)}#disqus_thread", data: { "disqus-identifier" => "#{post.title}" }
+        = link_to "0 comments", "#{post_path(post)}#disqus_thread", data: { "disqus-identifier" => "#{post.slug}" }
 .row.content
   .col-sm-12
     = highlight_if_needed(markdown(show_content(post.body, is_index: is_index)), @highlights)
