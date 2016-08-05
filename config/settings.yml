@@ -2,9 +2,9 @@ content:
   readmore_tag: "<<READMORE>>"
   show_number_on_index: 10
 site_owner:
-  email: <% ENV['SITE_OWNER_EMAIL'] %>
-  github_profile: <% ENV['SITE_OWNER_GITHUB'] %>
-  linkedin_profile: <% ENV['SITE_OWNER_LINKEDIN'] %>
+  email: <%= ENV['SITE_OWNER_EMAIL'] %>
+  github_profile: <%= ENV['SITE_OWNER_GITHUB'] %>
+  linkedin_profile: <%= ['SITE_OWNER_LINKEDIN'] %>
 disqus:
-  comment_src: <% ENV['DISQUS_COMMENT_SRC'] %>
+  comment_src: <%= ENV['DISQUS_COMMENT_SRC'] %>
   count_src: <%= ENV['DISQUS_COUNT_SRC'] %>
