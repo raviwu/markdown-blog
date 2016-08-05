@@ -3,3 +3,4 @@
 = render @posts, is_index: true
 .row
   .col-sm-12= paginate @posts, theme: 'twitter-bootstrap-3', pagination_class: "pagination-sm"
+  = render "disqus_comment_count"

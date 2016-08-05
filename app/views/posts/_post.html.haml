@@ -20,7 +20,16 @@
         = fa_icon "edit"
         = spaced_divider
         = l post.updated_at, format: :post
+      = spaced_divider
+      %span
+        = fa_icon "comment"
+        = spaced_divider
+        = link_to "0 comments", "#{post_path(post)}#disqus_thread", data: { "disqus-identifier" => "#{post.title}" }
 .row.content
   .col-sm-12
     = highlight_if_needed(markdown(show_content(post.body, is_index: is_index)), @highlights)
-    = link_to "READ MORE >>", post_path(post), class: "pull-right" if is_index && post.body.include?(Settings.content.readmore_tag)
+    - if is_index && post.body.include?(Settings.content.readmore_tag)
+      = link_to "READ MORE >>", post_path(post), class: "pull-right"
+    - elsif !is_index
+      %hr
+      = render "disqus_comment_field", post: post
