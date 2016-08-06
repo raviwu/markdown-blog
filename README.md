@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Personal Blog for tech writer. Feature includes:
 
-Things you may want to cover:
+- Content present with Markdown and syntax highlighter.
+- Simple to create new type of content by inherit the Entry class. No need to create new tables for minor difference between content type, aka Post, Page, Ebook, whatever new type of content you want to configure.
+- Friendly url, use slug instead of id as the url path.
+- Full text search on Post, backed with Postgres full text search.
+- Ebook layouts to present media download, cover, description, resources link.
+- Static Page can be created and automatically align to the sidebar menu.
+- No admin panel design, can just login to website and edit from the front end.
 
-* Ruby version
+## Framework:
 
-* System dependencies
+- [Rails 5.0.0](http://rubyonrails.org/)
+- [Ruby v2.3.1](https://www.ruby-lang.org/en/)
 
-* Configuration
+## Key Feature Gem used:
 
-* Database creation
+- Layout CSS with [Bootstrap](http://getbootstrap.com/) & [Font Awesome](http://fontawesome.io/)
+- Markdown Parser [redcarpet](https://github.com/vmg/redcarpet)
+- Syntax Highlighter [rouge](https://github.com/jneen/rouge)
+- Comment System backed by [Disqus](https://disqus.com/)
+- Assets managed with [Paperclip](https://github.com/thoughtbot/paperclip)
+- Full text search with [pg_search](https://github.com/Casecommons/pg_search)
 
-* Database initialization
+## Configuration:
 
-* How to run the test suite
+Configure the site personal content in the `Setting.yml`.
 
-* Services (job queues, cache servers, search engines, etc.)
+I was using heroku so there's my personal description in `config/settings/production.yml`, totally fine to remove that and replace with your own content.
 
-* Deployment instructions
-
-* ...
+Enjoy the site.
