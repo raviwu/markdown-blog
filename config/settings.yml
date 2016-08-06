@@ -2,9 +2,21 @@ content:
   readmore_tag: "<<READMORE>>"
   show_number_on_index: 10
 site_owner:
+  site_name: "YOUR SITE NAME"
   email: <%= ENV['SITE_OWNER_EMAIL'] %>
   github_profile: <%= ENV['SITE_OWNER_GITHUB'] %>
   linkedin_profile: <%= ENV['SITE_OWNER_LINKEDIN'] %>
+  ebook_intro: "Put Something to introduce your ebook publications.\n\nMarkdown supported."
+  footer:
+    left_column:
+      icon: "copyright"
+      title: "Title of left Footer Column"
+      content: "Description of left footer column.\n\nMarkdown supported."
+    right_column:
+      icon: "support"
+      title: "Title of right Footer Column"
+      content: "Description of right footer column.\n\nMarkdown supported."
+    bottom_line: "Copyright Statement"
 disqus:
   comment_src: <%= ENV['DISQUS_COMMENT_SRC'] %>
   count_src: <%= ENV['DISQUS_COUNT_SRC'] %>
