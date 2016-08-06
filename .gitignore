@@ -20,6 +20,9 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore Spring files.
+/spring/*.pid
+
 # Ignore public assets
 /public/system
 /public/system/*

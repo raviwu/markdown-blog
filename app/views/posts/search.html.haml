@@ -2,10 +2,10 @@
 = render "shared/page_header", header: "Search Result"
 .row
   .col-sm-12
-    %p= "You searched for: #{@highlights.join(" ")}."
+    %p= "You searched for: #{@highlights&.join(" ")}."
     %p= "Found #{pluralize(@posts.count, 'post')}."
 - if @posts.present?
   %hr
-= render @posts, is_index: false
+= render @posts, is_index: false, hide_comment: true
 .row
   .col-sm-12= paginate @posts, theme: 'twitter-bootstrap-3', pagination_class: "pagination-sm"
