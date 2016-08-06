@@ -1,3 +1,5 @@
+- is_index ||= false
+- hide_comment ||= false
 %h4.title
   = link_to post_path(post), class: "post-title" do
     = post.is_draft ? fa_icon("lock") : fa_icon("newspaper-o")
@@ -30,6 +32,6 @@
     = highlight_if_needed(markdown(show_content(post.body, is_index: is_index)), @highlights)
     - if is_index && post.body.include?(Settings.content.readmore_tag)
       = link_to "READ MORE >>", post_path(post), class: "pull-right"
-    - elsif !is_index
+    - if !is_index && !hide_comment
       %hr
       = render "disqus_comment_field", post: post
