@@ -3,4 +3,6 @@ class Image < ActiveRecord::Base
 
   has_attached_file :asset, styles: { medium: "300x300>", small: "200x200>",thumb: "100x100>" }
   validates_attachment_content_type :asset, content_type: /\Aimage\/.*\Z/
+
+  validates :entry, presence: true
 end
