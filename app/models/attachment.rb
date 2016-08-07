@@ -3,4 +3,6 @@ class Attachment < ActiveRecord::Base
 
   has_attached_file :asset
   validates_attachment_content_type :asset, content_type: /\Aapplication\/.*\Z/
+
+  validates :entry, presence: true
 end

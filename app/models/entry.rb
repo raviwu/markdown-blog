@@ -5,6 +5,7 @@ class Entry < ActiveRecord::Base
   before_validation :get_slug, :get_author_name, :get_published_at
 
   validates :title, presence: true
+  validates :user, presence: true
 
   def to_param
     slug
@@ -31,7 +32,7 @@ class Entry < ActiveRecord::Base
   end
 
   def get_slug
-    default_slug = title.downcase.strip.gsub(/([\uFF00-\uFFFF]|[\u0080-\uFFFF])+/, "").gsub(" ", "-")
+    default_slug = title&.downcase&.strip&.gsub(/([\uFF00-\uFFFF]|[\u0080-\uFFFF])+/, "")&.gsub(" ", "-")
     assign_slug = slug.present? ? slug : default_slug
 
     while self.class.where(slug: assign_slug).present? && self.class.where(slug: assign_slug).count > 1
@@ -46,6 +47,6 @@ class Entry < ActiveRecord::Base
   end
 
   def get_author_name
-    self.author_name ||= self.user.username
+    self&.author_name ||= self&.user&.username
   end
 end
