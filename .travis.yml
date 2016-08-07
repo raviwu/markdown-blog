@@ -3,7 +3,7 @@ deploy:
   app: lwstudio
   api_key: <%= ENV['HEROKU_API_KEY']%>
 env:
-  - DB=sqlite
+  - DB=postgresql
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
