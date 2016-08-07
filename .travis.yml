@@ -1,0 +1,4 @@
+deploy:
+  provider: heroku
+  app: lwstudio
+  api_key: <%= ENV['HEROKU_API_KEY']%>
