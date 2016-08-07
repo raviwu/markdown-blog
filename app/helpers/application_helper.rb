@@ -28,7 +28,6 @@ module ApplicationHelper
       space_after_headers: true,
       no_intra_emphasis: true,
       fenced_code_blocks: true,
-      no_intra_emphasis: true,
       lax_spacing: true,
       lax_html_blocks: true,
       strikethrough: true,
