@@ -2,3 +2,11 @@ deploy:
   provider: heroku
   app: lwstudio
   api_key: <%= ENV['HEROKU_API_KEY']%>
+env:
+  - DB=sqlite
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
+before_script:
+  - cp config/database.travis.yml config/database.yml
