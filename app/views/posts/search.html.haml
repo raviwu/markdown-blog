@@ -2,7 +2,7 @@
 = render "shared/page_header", header: "Search Result"
 .row
   .col-sm-12
-    %p= "You searched for: #{@highlights&.join(" ")}."
+    %p= "You searched for: #{@highlights&.join(" ")}"
     %p= "Found #{pluralize(@posts.count, 'post')}."
 - if @posts.present?
   %hr
