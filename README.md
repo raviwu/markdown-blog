@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://travis-ci.org/raviwu/markdown-blog.svg?branch=master)](https://travis-ci.org/raviwu/markdown-blog)
+
 A simple Personal Blog for tech writer. Feature includes:
 
 - Content present with Markdown and syntax highlighter.
