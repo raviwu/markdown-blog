@@ -10,7 +10,7 @@
   .row
     .form-group.col-sm-6.col-md-6.col-lg-6
       = f.label :published_at, "Scheduled to Publish At", id: "published_at"
-      = f.datetime_field :published_at, value: (page.published_at || Time.current.localtime), placeholder: "YYYY-MM-DD", id: "published_at", class: "form-control"
+      = f.date_field :published_at, value: ui_date(page.published_at), placeholder: "YYYY-MM-DD", id: "published-date", class: "form-control"
     .form-group.col-sm-6.col-md-6.col-lg-6
       = f.label :position, id: "position"
       = f.text_field :position, id: "position", class: "form-control"

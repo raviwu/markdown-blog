@@ -1,6 +1,11 @@
 require 'rouge/plugins/redcarpet'
 
 module ApplicationHelper
+  def ui_date(date)
+    date ||= Time.current.localtime
+    date.strftime('%Y-%m-%d')
+  end
+
   def spaced_divider
     "&nbsp;".html_safe
   end

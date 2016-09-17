@@ -5,8 +5,8 @@
     %title= yield(:title).present? ? "#{Settings.site_owner.site_name} | #{yield(:title)}" : Settings.site_owner.site_name
     = favicon_link_tag 'favcon.png', rel: 'icon', type: 'image/png'
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
   %body
     #wrapper
       = render 'shared/sidebar'
