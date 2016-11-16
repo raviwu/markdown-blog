@@ -33,3 +33,8 @@ Configure the site personal content in the `Setting.yml`.
 I was using heroku so there's my personal description in `config/settings/production.yml`, totally fine to remove that and replace with your own content.
 
 Enjoy the site.
+
+## TODO:
+
+- Try eliminate the JS warning on the page loading.
+- Try better practice the trailblazer structure here.
