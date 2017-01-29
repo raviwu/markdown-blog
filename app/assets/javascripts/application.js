@@ -11,8 +11,13 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require bootstrap.min
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+$( document ).on('turbolinks:load', function() { 
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+});

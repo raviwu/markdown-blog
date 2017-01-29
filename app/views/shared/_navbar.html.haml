@@ -2,8 +2,7 @@
   .container-fluid
     .navbar-header
       = button_to "LW Studio", root_path, class: "navbar-toggle", data: {target: "#mainNav", toggle: "collapse"}, type: "button", method: :get
-    = link_to "#menu-toggle", id: "menu-toggle", class: "btn btn-default fixed-toggle-navicon" do
-      = fa_icon "navicon"
+    = content_tag :div, fa_icon("navicon"), id: "menu-toggle", class: "btn btn-default fixed-toggle-navicon"
     = form_tag posts_search_path, class: "nav navbar-nav navbar-form form-inline navbar-right", method: :get do
       .input-group
         = text_field_tag :search_query, nil, class: "form-control", type: "text", placeholder: "Search Post for..."
