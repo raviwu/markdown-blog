@@ -36,5 +36,4 @@ Enjoy the site.
 
 ## TODO:
 
-- Try eliminate the JS warning on the page loading.
 - Try better practice the trailblazer structure here.
