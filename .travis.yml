@@ -3,7 +3,8 @@ services:
 addons:
   postgresql: "9.4"
 rvm:
-  - 2.3.1
+  - 2.4.0
+sudo: required
 env:
   - DB=postgresql
 before_script:
