@@ -14,8 +14,8 @@ A simple Personal Blog for tech writer. Feature includes:
 
 ## Framework:
 
-- [Rails 5.0.0](http://rubyonrails.org/)
-- [Ruby v2.3.1](https://www.ruby-lang.org/en/)
+- [Rails 5.0.1](http://rubyonrails.org/)
+- [Ruby v2.4.0](https://www.ruby-lang.org/en/)
 
 ## Key Feature Gem used:
 
