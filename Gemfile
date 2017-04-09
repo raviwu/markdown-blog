@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby "2.4.0"
+ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.0'
 # Use postgres as the database for Active Record
 gem 'pg'
 gem 'pg_search'
@@ -45,10 +45,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Settings file to config Site setup
 gem 'config'
-gem "safe_yaml", "~>1.0.4"
+gem 'safe_yaml', '~>1.0.4'
 
 # Attachment Management
-gem "paperclip", "~> 5.0.0"
+gem 'paperclip', '~> 5.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

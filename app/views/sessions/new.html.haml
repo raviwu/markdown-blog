@@ -8,9 +8,9 @@
         = fa_icon "user"
       = text_field_tag :username, nil, class: "form-control", placeholder: "Username"
   .form-group
-    %label.sr-only{:for => "Password"}
+    %label.sr-only{:for => 'password'}
     .input-group
       .input-group-addon
         = fa_icon "key"
-      = password_field_tag :password, nil, class: "form-control", placeholder: "Password"
+      = password_field_tag :password, nil, class: "form-control", placeholder: 'password'
   = button_tag "Submit", class: "btn btn-primary"

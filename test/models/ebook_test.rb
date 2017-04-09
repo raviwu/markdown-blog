@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class EbookTest < ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
@@ -9,15 +11,15 @@ class EbookTest < ActiveSupport::TestCase
   should validate_presence_of(:introduction)
   should validate_presence_of(:user)
 
-  test "return reference_infos in array" do
+  test 'return reference_infos in array' do
     ebook = Ebook.create(
-      title: "Ebook Title",
+      title: 'Ebook Title',
       user: create(:user),
-      references: "description1|url1,description2|url2"
+      references: 'description1|url1,description2|url2'
     )
     expected_info_output = [
-      { url: "url1", description: "description1" },
-      { url: "url2", description: "description2" }
+      { url: 'url1', description: 'description1' },
+      { url: 'url2', description: 'description2' }
     ]
     assert_equal ebook.reference_infos, expected_info_output
   end

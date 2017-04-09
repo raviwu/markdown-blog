@@ -3,7 +3,7 @@ services:
 addons:
   postgresql: "9.4"
 rvm:
-  - 2.4.0
+  - 2.4.1
 sudo: required
 env:
   - DB=postgresql
